@@ -1,6 +1,6 @@
 const apiKey = "ba605efc18f1572f61892fe426f18a1a";
 const apiCountryURL = "https://flagsapi.com";
-const apiUnsplash = "https://source.unsplash.com/1600x900/?";
+//const apiUnsplash = "https://unsplash.com/pt-br/s/fotografias/?";
 
 const cityInput = document.querySelector("#city-input");
 const searchBtn = document.querySelector("#search");
@@ -21,7 +21,7 @@ const loader = document.querySelector("#loader");
 const suggestionContainer = document.querySelector("#suggestions");
 const suggestionButtons = document.querySelectorAll("#suggestions button");
 
-// Loader
+
 const toggleLoader = () => {
   loader.classList.toggle("hide");
 };
@@ -39,7 +39,7 @@ const getWeatherData = async (city) => {
   return data;
 };
 
-// Tratamento de erro
+
 const showErrorMessage = () => {
   errorMessageContainer.classList.remove("hide");
 };
@@ -69,7 +69,7 @@ const showWeatherData = async (city) => {
     `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`
   );
 
-  // Fetch country flag from restcountries API
+
   const countryRes = await fetch(`https://restcountries.com/v3.1/alpha/${data.sys.country}`);
   const countryData = await countryRes.json();
   countryElement.setAttribute("src", countryData[0].flags.png);
@@ -77,8 +77,8 @@ const showWeatherData = async (city) => {
   umidityElement.innerText = `${data.main.humidity}%`;
   windElement.innerText = `${data.wind.speed}km/h`;
 
-  // Change bg image
-  document.body.style.backgroundImage = `url("${apiUnsplash + city}")`;
+
+  // document.body.style.backgroundImage = `url("${apiUnsplash + city}")`;
 
   weatherContainer.classList.remove("hide");
 };
@@ -99,7 +99,7 @@ cityInput.addEventListener("keyup", (e) => {
   }
 });
 
-// Sugestões
+
 suggestionButtons.forEach((btn) => {
   btn.addEventListener("click", () => {
     const city = btn.getAttribute("id");
